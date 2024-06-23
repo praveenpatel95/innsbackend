@@ -1,22 +1,17 @@
 <?php
 
-namespace App\Services\Auth;
+namespace App\Services\User;
 
 use App\Exceptions\BadRequestException;
-use App\Models\User;
-use App\Repository\Contracts\UserInterface;
+use App\Repository\Contracts\UserPreferenceInterface;
 use Illuminate\Http\Request;
-use Exception;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-class RegisterService
+class SaveUserPreferenceService
 {
-    /**
-     * @param UserInterface $userRepository
-     */
     public function __construct(
-        protected UserInterface $userRepository
+        protected UserPreferenceInterface $userPreferenceRepository
     )
     {}
 
@@ -30,18 +25,12 @@ class RegisterService
         return $this;
     }
 
-    /**
-     * @return User
-     * @throws BadRequestException
-     */
-    public function process(): User
+    public function process()
     {
         try {
             $data = $this->request->all();
-            $data['password'] = Hash::make($data['password']);
-            $user = $this->userRepository
-                ->create($data);
-            return $user->withToken();
+            $data['user_id'] = Auth::id();
+            return $this->userPreferenceRepository->saveOrUpdate($data);
         } catch (Exception $exception) {
             throw new BadRequestException($exception->getMessage(),
                 Response::HTTP_BAD_REQUEST);

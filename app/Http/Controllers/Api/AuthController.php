@@ -8,25 +8,56 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Services\Auth\LoginService;
 use App\Services\Auth\RegisterService;
 use App\Traits\ApiResponse;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
     use ApiResponse;
+
+    /**
+     * @param RegisterService $registerService
+     * @param LoginService $loginService
+     */
     public function __construct(
         protected RegisterService $registerService,
         protected LoginService $loginService,
     )
     {}
 
-    public function register(RegisterRequest $registerRequest){
+    /**
+     * @param RegisterRequest $registerRequest
+     * @return JsonResponse
+     * @throws \App\Exceptions\BadRequestException
+     */
+    public function register(RegisterRequest $registerRequest): JsonResponse
+    {
         return $this->success(
-            $this->registerService->setRequest($registerRequest)->process()
+            $this->registerService->setRequest($registerRequest)->process(),
+            Response::HTTP_CREATED
         );
     }
 
-    public function login(LoginRequest $userRequest){
+    /**
+     * @param LoginRequest $userRequest
+     * @return JsonResponse
+     * @throws \App\Exceptions\BadRequestException
+     */
+    public function login(LoginRequest $userRequest): JsonResponse
+    {
         return $this->success(
             $this->loginService->setRequest($userRequest)->process()
         );
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function logout(Request $request): JsonResponse
+    {
+        $request->user()->currentAccessToken()->delete();
+        return $this->success();
     }
 }

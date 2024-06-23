@@ -44,7 +44,7 @@ class User extends Authenticatable
     /**
      * @return $this
      */
-    function withToken(): self
+    public function withToken(): self
     {
         $this->token = $this->createToken('auth_token')->plainTextToken;
         return $this;

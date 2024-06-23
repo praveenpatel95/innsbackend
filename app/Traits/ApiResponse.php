@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 trait ApiResponse
 {
@@ -11,7 +12,7 @@ trait ApiResponse
      * @param $statusCode
      * @return JsonResponse
      */
-    public function success($data = null, $statusCode = 200): JsonResponse
+    public function success($data = null, $statusCode = Response::HTTP_OK): JsonResponse
     {
         return response()->json([
             'success' => true,
@@ -24,7 +25,7 @@ trait ApiResponse
      * @param $statusCode
      * @return JsonResponse
      */
-    public function fail($data = null, $statusCode = 400): JsonResponse
+    public function fail($data = null, $statusCode = Response::HTTP_BAD_REQUEST): JsonResponse
     {
         return response()->json([
             'success' => false,
