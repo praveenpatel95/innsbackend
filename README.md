@@ -50,9 +50,9 @@ Import the provided Postman collection (News API Postman collection) into your P
 
 Description: Checks the status of the API.
 
-Auth
-Login
-Endpoint: `POST {{base_url}}/login`
+Auth 
+#### Login: ####
+Endpoint `POST {{base_url}}/login`
 Body:
 ```json
 {
@@ -62,7 +62,7 @@ Body:
 ```
 Description: Logs in a user and sets a collection variable authToken with the token received.
 
-Register
+#### Register: ####
 Endpoint: `POST {{base_url}}/register`
 Body:
 ```json
@@ -75,13 +75,12 @@ Body:
 ```
 Description: Register as a new user.
 
-Logout
+#### Logout: ####
 Endpoint: `POST {{base_url}}/logout`
 Description: Logs out user.
 
-User Preference
+#### User Preference ####
 Add or Update
-
 Endpoint: `POST {{base_url}}/user/preference`
 ```
 Body (form-data):
@@ -90,13 +89,13 @@ Body (form-data):
 ```
 Description: Add or update user Preference setting.
 
-Get User Preference
+#### Get User Preference ####
 
 Endpoint: `GET {{base_url}}/user/preference`
 
 Description: Retrieves logged in user Preference setting.
 
-Get News 
+#### Get News ####
 
 Endpoint: `GET {{base_url}}/news/search`
 ```
