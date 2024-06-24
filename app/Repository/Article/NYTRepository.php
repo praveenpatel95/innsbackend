@@ -2,7 +2,6 @@
 
 namespace App\Repository\Article;
 
-use App\Config\NewYorkTimesConfig;
 use App\Exceptions\BadRequestException;
 use App\Repository\Contracts\ArticleInterface;
 use App\Services\HttpClientService;
@@ -37,7 +36,7 @@ class NYTRepository implements ArticleInterface
                            int     $pageSize
     ) : array    {
         try {
-            $requestUrl = NewYorkTimesConfig::getBaseUrl() . "/articlesearch.json";
+            $requestUrl = config('newsapi.new_york_times_base_url') . "/articlesearch.json";
             $customParams = [];
 
             if ($fromDate && $toDate) {
@@ -48,7 +47,7 @@ class NYTRepository implements ArticleInterface
             }
 
             $queryParams = [
-                    'api-key' => NewYorkTimesConfig::getApiKey(),
+                    'api-key' => config('newsapi.new_york_times_api_key'),
                     'q' => $keyword,
                     'page' => $page,
                 ] + $customParams;

@@ -2,7 +2,6 @@
 
 namespace App\Repository\Article;
 
-use App\Config\TheGuardianConfig;
 use App\Exceptions\BadRequestException;
 use App\Repository\Contracts\ArticleInterface;
 use App\Services\HttpClientService;
@@ -36,9 +35,9 @@ class TheGuardianRepository implements ArticleInterface
                            int     $pageSize
     ) : array    {
         try {
-            $requestUrl = TheGuardianConfig::getBaseUrl() . "/search";
+            $requestUrl = config('newsapi.theguardian_base_url') . "/search";
             $queryParams = [
-                'api-key' => TheGuardianConfig::getApiKey(),
+                'api-key' => config('newsapi.theguardian_api_key'),
                 'q' => $keyword,
                 'page' => $page,
             ];

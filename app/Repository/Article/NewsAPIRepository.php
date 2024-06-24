@@ -2,7 +2,6 @@
 
 namespace App\Repository\Article;
 
-use App\Config\NewsAPIConfig;
 use App\Exceptions\BadRequestException;
 use App\Repository\Contracts\ArticleInterface;
 use App\Services\HttpClientService;
@@ -37,9 +36,9 @@ class NewsAPIRepository implements ArticleInterface
     ) : array
     {
         try {
-            $url = NewsAPIConfig::getBaseUrl() . "/everything";
+            $url = config('newsapi.news_api_base_url') . "/everything";
             $queryParams = [
-                'apiKey' => NewsAPIConfig::getApiKey(),
+                'apiKey' => config('newsapi.news_api_key'),
                 'q' => $keyword,
                 'pageSize' => $pageSize,
                 'page' => $page,
