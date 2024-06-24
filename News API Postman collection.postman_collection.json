@@ -37,7 +37,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/news/search?source=newsapi&keyword=it",
+							"raw": "{{base_url}}/news/search?source=newsapi&keyword=it&fromDate=2024-01-24&toDate=2024-12-24&page=2",
 							"host": [
 								"{{base_url}}"
 							],
@@ -53,6 +53,18 @@
 								{
 									"key": "keyword",
 									"value": "it"
+								},
+								{
+									"key": "fromDate",
+									"value": "2024-01-24"
+								},
+								{
+									"key": "toDate",
+									"value": "2024-12-24"
+								},
+								{
+									"key": "page",
+									"value": "2"
 								}
 							]
 						}
