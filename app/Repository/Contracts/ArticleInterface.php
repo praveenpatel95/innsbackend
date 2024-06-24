@@ -6,7 +6,8 @@ interface ArticleInterface
 {
     public function search(
         string $keyword,
-        ?string $date = null,
+        ?string $fromDate = null,
+        ?string $toDate = null,
         ?string $category = null,
         int $page,
         int $pageSize,

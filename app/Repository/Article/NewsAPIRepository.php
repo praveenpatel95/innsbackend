@@ -19,7 +19,8 @@ class NewsAPIRepository implements ArticleInterface
 
     /**
      * @param string $keyword
-     * @param string|null $date
+     * @param string|null $fromDate
+     * @param string|null $toDate
      * @param string|null $category
      * @param int $page
      * @param int $pageSize
@@ -28,7 +29,8 @@ class NewsAPIRepository implements ArticleInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function search(string  $keyword,
-                           ?string $date = null,
+                           ?string $fromDate = null,
+                           ?string $toDate = null,
                            ?string $category = null,
                            int     $page,
                            int     $pageSize
@@ -41,8 +43,8 @@ class NewsAPIRepository implements ArticleInterface
                 'q' => $keyword,
                 'pageSize' => $pageSize,
                 'page' => $page,
-                'from' => $date ? date('Y-m-d', strtotime($date)) : '',
-                'to' => $date ? date('Y-m-d', strtotime($date)) : '',
+                'from' => $fromDate ? date('Y-d-m', strtotime($fromDate)) : '',
+                'to' => $toDate ? date('Y-d-m', strtotime($toDate)) : '',
             ];
 
             $response = $this->httpClientService->getRequest($url, $queryParams);

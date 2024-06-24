@@ -17,8 +17,20 @@ class TheGuardianRepository implements ArticleInterface
     )
     {}
 
+    /**
+     * @param string $keyword
+     * @param string|null $fromDate
+     * @param string|null $toDate
+     * @param string|null $category
+     * @param int $page
+     * @param int $pageSize
+     * @return array
+     * @throws BadRequestException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function search(string  $keyword,
-                           ?string $date = null,
+                           ?string $fromDate = null,
+                           ?string $toDate = null,
                            ?string $category = null,
                            int     $page,
                            int     $pageSize
@@ -31,9 +43,9 @@ class TheGuardianRepository implements ArticleInterface
                 'page' => $page,
             ];
 
-            if ($date) {
-                $queryParams['begin_date'] = date('Ymd', strtotime($date));
-                $queryParams['end_date'] = date('Ymd', strtotime($date));
+            if ($fromDate && $toDate) {
+                $queryParams['begin_date'] = date('Ymd', strtotime($fromDate));
+                $queryParams['end_date'] = date('Ymd', strtotime($toDate));
             }
 
             $response = $this->httpClientService->getRequest($requestUrl, $queryParams);

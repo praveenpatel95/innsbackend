@@ -9,7 +9,8 @@ class ArticleService
 {
     protected string $keyword;
     protected string $source;
-    protected ?string $date = null;
+    protected ?string $fromDate = null;
+    protected ?string $toDate = null;
     protected ?string $category = null;
     protected int $pageSize = 12;
     protected int $page = 1;
@@ -44,12 +45,22 @@ class ArticleService
     }
 
     /**
-     * @param string|null $date
+     * @param string|null $fromDate
      * @return $this
      */
-    public function setDate(?string $date): self
+    public function setFromDate(?string $fromDate): self
     {
-        $this->date = $date;
+        $this->fromDate = $fromDate;
+        return $this;
+    }
+
+    /**
+     * @param string|null $toDate
+     * @return $this
+     */
+    public function setToDate(?string $toDate): self
+    {
+        $this->toDate = $toDate;
         return $this;
     }
 
@@ -80,7 +91,8 @@ class ArticleService
     {
         $rawData = $this->articleRepository->search(
             $this->keyword,
-            $this->date,
+            $this->fromDate,
+            $this->toDate,
             $this->category,
             $this->page,
             $this->pageSize,

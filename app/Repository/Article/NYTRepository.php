@@ -20,7 +20,8 @@ class NYTRepository implements ArticleInterface
 
     /**
      * @param string $keyword
-     * @param string|null $date
+     * @param string|null $fromDate
+     * @param string|null $toDate
      * @param string|null $category
      * @param int $page
      * @param int $pageSize
@@ -29,7 +30,8 @@ class NYTRepository implements ArticleInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function search(string  $keyword,
-                           ?string $date = null,
+                           ?string $fromDate = null,
+                           ?string $toDate = null,
                            ?string $category = null,
                            int     $page,
                            int     $pageSize
@@ -38,10 +40,10 @@ class NYTRepository implements ArticleInterface
             $requestUrl = NewYorkTimesConfig::getBaseUrl() . "/articlesearch.json";
             $customParams = [];
 
-            if ($date) {
+            if ($fromDate && $toDate) {
                 $customParams = [
-                    'begin_date' => date('Ymd', strtotime($date)),
-                    'end_date' => date('Ymd', strtotime($date)),
+                    'begin_date' => date('Ymd', strtotime($fromDate)),
+                    'end_date' => date('Ymd', strtotime($toDate)),
                 ];
             }
 

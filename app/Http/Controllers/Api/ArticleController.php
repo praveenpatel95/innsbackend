@@ -28,7 +28,8 @@ class ArticleController extends Controller
     {
         $source = $request->source;
         $keyword = $request->keyword;
-        $date = $request->date;
+        $fromDate = $request->fromDate;
+        $toDate = $request->toDate;
         $category = $request->category;
         $page = $request->page;
 
@@ -36,7 +37,8 @@ class ArticleController extends Controller
             ->setSource($source)
             ->setKeyword($keyword)
             ->setCategory($category)
-            ->setDate($date)
+            ->setFromDate($fromDate)
+            ->setToDate($toDate)
             ->setPage($page)
             ->process();
         return $this->success($articles);
