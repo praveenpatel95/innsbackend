@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Repository\Contracts\UserInterface;
 use App\Repository\Contracts\UserPreferenceInterface;
-use App\Repository\UserPreferenceRepository;
-use App\Repository\UserRepository;
+use App\Repository\User\UserPreferenceRepository;
+use App\Repository\User\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider

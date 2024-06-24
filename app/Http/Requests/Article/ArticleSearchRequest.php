@@ -17,7 +17,8 @@ class ArticleSearchRequest extends FormRequest
     {
         return [
             'keyword' => 'required|string',
-            'date' => 'nullable|date',
+            'fromDate' => 'nullable|date',
+            'toDate' => 'nullable|date',
             'category' => 'nullable|string',
             'source' => 'nullable|string|in:newsapi,theguardian,nyt',
         ];
