@@ -3,6 +3,9 @@
 This is a REST API application for Multiple New API Data source with Sanctum authentication. 
 You can interact with it by importing the "News API Postman collection" included in the repo.
 
+# Requirement #
+ php : ^8.1
+
 # Installation Instructions
 
 ## Prerequisites
@@ -15,8 +18,10 @@ Change into project directory before running any commands
 Rename the .env.example file .env
 - `cp .env.example .env`
 - Update News KEY ENV value
+- Update database credentials or you can use mysqlLite
 
 ## Setup Methods
+
 
 ### Docker Setup
 Start the Docker containers:
