@@ -37,7 +37,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/news/search?source=newsapi&keyword=it&fromDate=2024-01-24&toDate=2024-12-24&page=2",
+							"raw": "{{base_url}}/news/search?source=nyt&keyword=it&fromDate=2024-01-24&toDate=2024-12-24&page=2",
 							"host": [
 								"{{base_url}}"
 							],
@@ -48,7 +48,7 @@
 							"query": [
 								{
 									"key": "source",
-									"value": "newsapi"
+									"value": "nyt"
 								},
 								{
 									"key": "keyword",
@@ -295,6 +295,40 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000/api\n",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string"
 		}
 	]
 }

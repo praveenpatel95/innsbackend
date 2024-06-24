@@ -103,9 +103,9 @@ Query Parameters:
     source: "newsapi"
     keyword: "hair"
     fromDate: "2024-01-24"
-	toDate: "2024-12-24"
-	category: ""
-	page: "1"
+    toDate: "2024-12-24"
+    category: ""
+    page: "1"
 	
  ```
 
