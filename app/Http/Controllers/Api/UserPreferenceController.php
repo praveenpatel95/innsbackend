@@ -6,13 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\PreferenceRequest;
 use App\Services\User\GetUserPreferenceService;
 use App\Services\User\SaveUserPreferenceService;
-use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 
 class UserPreferenceController extends Controller
 {
-    use ApiResponse;
-
     /**
      * @param SaveUserPreferenceService $saveUserPreferenceService
      * @param GetUserPreferenceService $getUserPreferenceService

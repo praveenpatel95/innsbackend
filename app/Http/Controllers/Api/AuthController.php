@@ -7,14 +7,12 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Services\Auth\LoginService;
 use App\Services\Auth\RegisterService;
-use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
-    use ApiResponse;
 
     /**
      * @param RegisterService $registerService

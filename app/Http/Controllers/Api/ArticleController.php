@@ -5,13 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Article\ArticleSearchRequest;
 use App\Services\Article\ArticleService;
-use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 
 class ArticleController extends Controller
 {
-    use ApiResponse;
-
     /**
      * @param ArticleService $articleService
      */
