@@ -4,7 +4,7 @@ namespace App\Repository\User;
 
 use App\Models\UserPreference;
 use App\Repository\Contracts\UserPreferenceInterface;
-
+use Exception;
 class UserPreferenceRepository implements UserPreferenceInterface
 {
     /**
@@ -21,7 +21,14 @@ class UserPreferenceRepository implements UserPreferenceInterface
      */
     public function saveOrUpdate(array $preference) :UserPreference
     {
-        return $this->userPreference->updateOrCreate($preference);
+        try {
+            return $this->userPreference->updateOrCreate(
+                ['user_id' => $preference['user_id']],
+                $preference
+            );
+        } catch (Exception $e) {
+            throw new BadRequestException($e->getCode());
+        }
     }
 
     /**

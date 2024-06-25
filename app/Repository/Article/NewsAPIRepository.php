@@ -42,8 +42,8 @@ class NewsAPIRepository implements ArticleInterface
                 'q' => $keyword,
                 'pageSize' => $pageSize,
                 'page' => $page,
-                'from' => $fromDate ? date('Y-d-m', strtotime($fromDate)) : '',
-                'to' => $toDate ? date('Y-d-m', strtotime($toDate)) : '',
+                'from' => $fromDate ? date('Y-m-d', strtotime($fromDate)) : '',
+                'to' => $toDate ? date('Y-m-d', strtotime($toDate)) : '',
             ];
 
             $response = $this->httpClientService->getRequest($url, $queryParams);

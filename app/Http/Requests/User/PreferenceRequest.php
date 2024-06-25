@@ -15,8 +15,9 @@ class PreferenceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'source' => 'required|max:255',
+            'source' => 'required|max:255|in:newsapi,theguardian,nyt',
             'category' => 'required|max:255',
+            'author' => 'required|max:255',
         ];
     }
 

@@ -13,5 +13,6 @@ class UserPreference extends Model
         'user_id',
         'source',
         'category',
+        'author',
     ];
 }
