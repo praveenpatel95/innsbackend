@@ -37,7 +37,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/news/search?source=nyt&keyword=it&fromDate=2024-01-24&toDate=2024-12-24&page=2",
+							"raw": "{{base_url}}/news/search?source=newsapi&keyword=data&fromDate=2024-05-25&toDate=2024-06-24&page=2",
 							"host": [
 								"{{base_url}}"
 							],
@@ -48,19 +48,19 @@
 							"query": [
 								{
 									"key": "source",
-									"value": "nyt"
+									"value": "newsapi"
 								},
 								{
 									"key": "keyword",
-									"value": "it"
+									"value": "data"
 								},
 								{
 									"key": "fromDate",
-									"value": "2024-01-24"
+									"value": "2024-05-25"
 								},
 								{
 									"key": "toDate",
-									"value": "2024-12-24"
+									"value": "2024-06-24"
 								},
 								{
 									"key": "page",
@@ -269,12 +269,17 @@
 							"formdata": [
 								{
 									"key": "source",
-									"value": "tesla",
+									"value": "newsapi",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "df",
+									"value": "Business",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "Praveen",
 									"type": "text"
 								}
 							]
